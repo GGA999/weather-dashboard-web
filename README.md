@@ -1,16 +1,37 @@
-# React + Vite
+# weather stagisti Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend React/Vite con Material UI per la dashboard meteo weather stagisti.
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+cp .env.example .env
+npm run dev
+```
 
-## React Compiler
+## Variabili
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+VITE_API_URL=http://localhost:8080/api
+```
 
-## Expanding the ESLint configuration
+`VITE_API_URL` deve puntare alla root `/api` del backend Express.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Flusso manuale
+
+1. Avvia il backend su `http://localhost:8080`.
+2. Avvia il frontend con `npm run dev`.
+3. All'apertura la dashboard mostra Milano come localita predefinita.
+4. Cerca una citta con almeno 2 caratteri.
+5. Seleziona un risultato omonimo.
+6. Verifica forecast, trend, probabilita pioggia e ricerche recenti.
+
+Non e previsto login/logout. Le ricerche recenti vengono salvate nel `localStorage` del browser.
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```
