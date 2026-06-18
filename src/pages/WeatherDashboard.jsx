@@ -446,8 +446,9 @@ function ForecastTabs({ value, onChange }) {
 }
 
 function ForecastCard({ item, fallbackIndex = 0, weekly = false }) {
-  const Icon = getWeatherIcon(item?.weatherCode);
-  const tone = getWeatherTone(item?.weatherCode);
+  const isDay = weekly ? undefined : item?.isDay;
+  const Icon = getWeatherIcon(item?.weatherCode, isDay);
+  const tone = getWeatherTone(item?.weatherCode, isDay);
   const temperature = weekly ? item?.temperatureMax : item?.temperature;
   const label = weekly ? formatReadableDate(item?.date).split(" ")[0] : item?.time ? formatHour(item.time) : "--";
 

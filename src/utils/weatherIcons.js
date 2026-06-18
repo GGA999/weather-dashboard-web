@@ -1,5 +1,6 @@
 import AcUnitRoundedIcon from "@mui/icons-material/AcUnitRounded";
 import CloudRoundedIcon from "@mui/icons-material/CloudRounded";
+import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
 import GrainRoundedIcon from "@mui/icons-material/GrainRounded";
 import ThunderstormRoundedIcon from "@mui/icons-material/ThunderstormRounded";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
@@ -10,11 +11,15 @@ function codeValue(code) {
   return Number(code);
 }
 
-export function getWeatherIcon(code) {
+function isNight(isDay) {
+  return isDay === false || isDay === 0;
+}
+
+export function getWeatherIcon(code, isDay) {
   const value = codeValue(code);
 
   if (value === 0 || value === 1 || value === 2) {
-    return WbSunnyRoundedIcon;
+    return isNight(isDay) ? DarkModeRoundedIcon : WbSunnyRoundedIcon;
   }
 
   if (value === 3) {
@@ -40,11 +45,11 @@ export function getWeatherIcon(code) {
   return VisibilityRoundedIcon;
 }
 
-export function getWeatherTone(code) {
+export function getWeatherTone(code, isDay) {
   const value = codeValue(code);
 
   if (value === 0 || value === 1 || value === 2) {
-    return "#f1a94e";
+    return isNight(isDay) ? "#c7d7ff" : "#f1a94e";
   }
 
   if (value >= 51 && value <= 99) {
